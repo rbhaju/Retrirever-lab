@@ -81,24 +81,32 @@ body::before{
 @media(prefers-reduced-motion:no-preference){.bg-slip{animation:slipfloat 700ms ease-out both;}}
 @keyframes slipfloat{from{opacity:0;}}
 
-/* ---- Shared top bar ---- */
+/* ---- Shared top bar / nav ---- */
 .topbar{
   position:fixed;top:0;left:0;right:0;z-index:20;
   display:flex;align-items:center;justify-content:space-between;
-  padding:14px 22px;
-  background:rgba(231,220,196,0.82);
+  padding:12px 22px;
+  background:rgba(231,220,196,0.85);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(120,90,40,0.12);
 }
 .tb-home{display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer;}
-.tb-logo{height:30px;width:auto;display:block;}
+.tb-logo{height:28px;width:auto;display:block;}
 .tb-name{font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:-0.3px;color:var(--ink);}
-.tb-link{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink-2);text-decoration:none;letter-spacing:0.04em;}
-.tb-link:hover{color:var(--ink);}
-.tb-link .ic{width:15px;height:15px;stroke:currentColor;}
-.tb-back{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink-2);text-decoration:none;letter-spacing:0.04em;}
-.tb-back:hover{color:var(--ink);}
-.tb-back .ic{width:15px;height:15px;stroke:currentColor;}
+/* right-side nav links */
+.tb-nav{display:flex;align-items:center;gap:4px;}
+.tb-nav a{
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--ink-2);text-decoration:none;letter-spacing:0.02em;
+  padding:7px 11px;border-radius:7px;transition:background 150ms,color 150ms;
+}
+.tb-nav a:hover{color:var(--ink);background:rgba(120,90,40,0.10);}
+.tb-nav a.active{color:var(--ink);background:rgba(224,169,46,0.22);}
+@media(max-width:480px){
+  .topbar{padding:10px 14px;}
+  .tb-name{display:none;}            /* logo only on small screens, saves room for nav */
+  .tb-nav a{padding:7px 8px;font-size:11px;}
+}
 
 /* ---- Shared scroll-reveal ---- */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 600ms cubic-bezier(0.16,1,0.3,1),transform 600ms cubic-bezier(0.16,1,0.3,1);}
