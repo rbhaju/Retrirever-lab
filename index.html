@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retriever Lab · We build things worth keeping</title>
+<meta name="description" content="Retriever Lab is an independent studio building privacy-first, beautifully made apps. Makers of Kepto.">
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@400,500,600&f[]=space-mono@400,700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --paper:#F6F0E2;
+  --paper-edge:#E2DAC4;
+  --ink:#211C12;
+  --ink-2:#5A5340;
+  --ink-3:#8C846D;
+  --dash:#C8BFA6;
+  --amber:#E0A92E;
+  --amber-deep:#B6841A;
+  --stamp-ok:#2E7D46;
+  --stamp-warn:#C17A12;
+  --light-desk:#E7DCC4;
+  --mono:'Space Mono','Courier New',monospace;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:
+    radial-gradient(1200px 800px at 50% -10%, #F0E7D2, transparent 70%),
+    radial-gradient(900px 600px at 85% 100%, #DED2B6, transparent 60%),
+    var(--light-desk);
+  font-family:'General Sans',-apple-system,sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  padding:64px 20px 100px;
+  position:relative;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.4;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.6 0 0 0 0 0.54 0 0 0 0 0.42 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E");
+}
+/* desk atmosphere on wide screens */
+.coffee-ring{position:fixed;z-index:0;pointer-events:none;width:200px;height:200px;border-radius:50%;border:15px solid rgba(120,90,40,0.09);top:16%;left:calc(50% - 520px);display:none;}
+.coffee-ring::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(120,90,40,0.05);}
+@media(min-width:1040px){.coffee-ring{display:block;}}
+
+.ic{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ── DOCUMENT (the studio "letterhead" sheet) ── */
+.sheet{
+  max-width:560px;margin:0 auto;background:var(--paper);
+  position:relative;z-index:1;color:var(--ink);
+  padding:48px 44px 0;
+  box-shadow:0 4px 10px rgba(80,60,30,0.15),0 30px 70px rgba(80,60,30,0.25);
+  font-family:var(--mono);
+  transform-origin:top center;
+  animation:printIn 1100ms cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes printIn{0%{opacity:0;transform:translateY(-40px) scaleY(0.5);filter:blur(2px);}55%{opacity:1;filter:blur(0);}100%{opacity:1;transform:none;}}
+.sheet::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0.35;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.55 0 0 0 0 0.5 0 0 0 0 0.4 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.sheet-top{position:absolute;top:-1px;left:0;right:0;height:9px;background:radial-gradient(circle at 8px -4px,transparent 6px,var(--paper) 6px) repeat-x;background-size:16px 9px;z-index:2;}
+.sheet-bottom{position:relative;height:18px;margin:0 -44px;background:var(--paper);-webkit-mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;-webkit-mask-size:18px 18px;mask-size:18px 18px;}
+
+/* letterhead */
+.lh{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;padding-bottom:22px;border-bottom:2px solid var(--ink);}
+.lh-brand{display:flex;align-items:center;gap:14px;}
+.lh-mark{width:48px;height:48px;border-radius:12px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lh-mark .ic{width:28px;height:28px;stroke:var(--amber);stroke-width:2;}
+.lh-name{font-family:'Clash Display',sans-serif;font-size:23px;font-weight:700;letter-spacing:-0.5px;line-height:1;color:var(--ink);}
+.lh-sub{font-size:9.5px;color:var(--ink-3);letter-spacing:0.14em;text-transform:uppercase;margin-top:5px;}
+.lh-meta{text-align:right;font-size:9.5px;color:var(--ink-3);letter-spacing:0.06em;line-height:1.7;}
+
+.stamp-corner{position:absolute;top:90px;right:36px;z-index:3;border:2.5px solid var(--stamp-ok);color:var(--stamp-ok);font-family:'Clash Display',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:7px 11px;border-radius:5px;transform:rotate(8deg);background:rgba(46,125,70,0.05);line-height:1.3;text-align:center;opacity:0;animation:stampIn 600ms cubic-bezier(0.34,1.56,0.64,1) 900ms both;}
+@keyframes stampIn{from{opacity:0;transform:rotate(8deg) scale(1.5);}to{opacity:0.9;transform:rotate(8deg) scale(1);}}
+
+/* manifesto */
+.block{position:relative;z-index:1;padding:30px 0;border-bottom:1.5px dashed var(--dash);}
+.block:last-of-type{border-bottom:none;}
+.eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px;}
+.headline{font-family:'Clash Display',sans-serif;font-size:30px;font-weight:600;line-height:1.18;letter-spacing:-0.6px;color:var(--ink);}
+.headline .hl{color:var(--amber-deep);}
+.para{font-family:'General Sans',sans-serif;font-size:14px;line-height:1.75;color:var(--ink-2);margin-top:16px;}
+
+/* principles as stamped line-items */
+.principle{display:flex;gap:14px;align-items:flex-start;padding:15px 0;}
+.principle:first-of-type{padding-top:4px;}
+.p-ic{width:38px;height:38px;border:1.5px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.p-ic .ic{width:20px;height:20px;stroke:var(--ink);}
+.p-body{flex:1;}
+.p-title{font-family:'Clash Display',sans-serif;font-size:15px;font-weight:700;color:var(--ink);}
+.p-desc{font-family:'General Sans',sans-serif;font-size:12.5px;line-height:1.6;color:var(--ink-2);margin-top:3px;}
+
+/* product card · Kepto */
+.product{position:relative;z-index:1;background:#FFFDF7;border:1.5px solid var(--paper-edge);border-radius:8px;padding:24px;margin-top:6px;}
+.product-head{display:flex;align-items:center;gap:14px;}
+.product-mark{width:50px;height:50px;border-radius:12px;background:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(224,169,46,0.3);}
+.product-mark .ic{width:28px;height:28px;stroke:var(--ink);stroke-width:2.2;}
+.product-name{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.4px;color:var(--ink);}
+.product-tag{font-size:11px;color:var(--ink-3);margin-top:3px;letter-spacing:0.04em;}
+.product-desc{font-family:'General Sans',sans-serif;font-size:13px;line-height:1.7;color:var(--ink-2);margin:16px 0;}
+.product-status{display:inline-flex;align-items:center;gap:6px;font-family:'Clash Display',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--stamp-warn);border:2px solid var(--stamp-warn);background:rgba(193,122,18,0.07);padding:4px 10px;border-radius:4px;transform:rotate(-2deg);margin-bottom:16px;}
+.product-status .ic{width:12px;height:12px;stroke:var(--stamp-warn);}
+.product-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:9px;border:none;border-radius:10px;padding:13px 20px;cursor:pointer;text-decoration:none;font-family:'General Sans',sans-serif;font-weight:600;font-size:14px;transition:transform 150ms,box-shadow 150ms;}
+.btn:active{transform:scale(0.97);}
+.btn-dark{background:var(--ink);color:var(--paper);box-shadow:0 6px 18px rgba(0,0,0,0.25);}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,0.35);}
+.btn-dark .apple{width:22px;height:22px;fill:var(--paper);stroke:none;}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+.btn-ghost:hover{background:var(--ink);color:var(--paper);}
+.btn-ghost .ic{width:16px;height:16px;}
+.btn-dark .b-small{font-size:8.5px;letter-spacing:0.06em;opacity:0.8;display:block;line-height:1;}
+.btn-dark .b-big{font-family:'Clash Display',sans-serif;font-size:15px;font-weight:600;line-height:1.15;}
+
+/* divider label */
+.div-label{position:relative;z-index:1;text-align:center;font-size:10px;letter-spacing:0.2em;color:var(--ink-3);text-transform:uppercase;margin:30px 0 6px;}
+.div-label span{background:var(--paper);padding:0 12px;position:relative;}
+.div-label::before{content:'';position:absolute;left:0;right:0;top:50%;border-top:1.5px dashed var(--dash);z-index:-1;}
+
+/* contact / footer */
+.contact{position:relative;z-index:1;padding:26px 0 4px;text-align:center;}
+.contact-h{font-family:'Clash Display',sans-serif;font-size:16px;font-weight:700;color:var(--ink);}
+.contact-mail{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:14px;color:var(--ink);border-bottom:1.5px dashed var(--ink-3);padding-bottom:2px;text-decoration:none;}
+.contact-mail:hover{border-bottom-style:solid;}
+
+.barcode{margin:26px 0 6px;height:44px;position:relative;z-index:1;background:repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 1px,transparent 1px,transparent 3px),repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 2px,transparent 2px,transparent 6px),repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 1px,transparent 1px,transparent 4px);background-size:5px 100%,11px 100%,7px 100%;}
+.barcode-num{text-align:center;font-size:11px;letter-spacing:0.3em;color:var(--ink-2);margin-top:8px;position:relative;z-index:1;}
+.foot{text-align:center;font-size:10px;color:var(--ink-3);margin:18px 0 6px;letter-spacing:0.08em;position:relative;z-index:1;text-transform:uppercase;}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 600ms cubic-bezier(0.16,1,0.3,1),transform 600ms cubic-bezier(0.16,1,0.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.principle.reveal:nth-of-type(1){transition-delay:0ms;}
+.principle.reveal:nth-of-type(2){transition-delay:90ms;}
+.principle.reveal:nth-of-type(3){transition-delay:180ms;}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}.sheet,.stamp-corner{animation:none;}}
+</style>
+</head>
+<body>
+
+<div class="coffee-ring"></div>
+
+<div class="sheet">
+  <div class="sheet-top"></div>
+
+  <!-- LETTERHEAD -->
+  <div class="lh">
+    <div class="lh-brand">
+      <div class="lh-mark">
+        <!-- retriever / fetch mark: a dog-tag + check, simple paw-less monogram -->
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 3 20 6.5V12c0 5-3.4 8-8 9.5C7.4 20 4 17 4 12V6.5Z"/><path d="M9 12 11 14 15 9.5"/></svg>
+      </div>
+      <div>
+        <div class="lh-name">Retriever Lab</div>
+        <div class="lh-sub">Independent App Studio</div>
+      </div>
+    </div>
+    <div class="lh-meta">EST. 2026<br>MADE WITH CARE<br>NO. 001</div>
+  </div>
+
+  <div class="stamp-corner">Open<br>for work</div>
+
+  <!-- MANIFESTO -->
+  <div class="block">
+    <div class="eyebrow">Who we are</div>
+    <div class="headline">We build things<br>worth <span class="hl">keeping</span>.</div>
+    <div class="para">Retriever Lab is a small, independent studio. We make calm, privacy-first apps that do one thing genuinely well, and respect the people who use them. No dark patterns, no harvesting your data, no clutter. Just useful tools, carefully made.</div>
+  </div>
+
+  <!-- PRINCIPLES -->
+  <div class="block">
+    <div class="eyebrow">What we believe</div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><circle cx="12" cy="15.5" r="1"/></svg></div>
+      <div class="p-body"><div class="p-title">Your data is yours</div><div class="p-desc">We build offline-first. Where we can, nothing leaves your device. Privacy isn't a feature. It's the default.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+      <div class="p-body"><div class="p-title">One thing, done well</div><div class="p-desc">We'd rather make a focused tool that's a joy to use than a bloated one that does everything badly.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 7a5.5 5.5 0 0 1 9.5 5c-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+      <div class="p-body"><div class="p-title">Made with care</div><div class="p-desc">Details matter. We sweat the typography, the motion, the feel, because good craft is a form of respect.</div></div>
+    </div>
+  </div>
+
+  <div class="div-label"><span>Our products</span></div>
+
+  <!-- KEPTO PRODUCT -->
+  <div class="block">
+    <div class="product">
+      <div class="product-head">
+        <div class="product-mark"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3 20 6.5V12c0 5-3.4 8-8 9.5C7.4 20 4 17 4 12V6.5Z"/><path d="M9 12 11 14 15 9.5"/></svg></div>
+        <div>
+          <div class="product-name">Kepto</div>
+          <div class="product-tag">Keep the proof, not the paper</div>
+        </div>
+      </div>
+      <div class="product-status"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7V12L15.5 14"/></svg>Coming soon</div>
+      <div class="product-desc">Snap any receipt and Kepto files it, reading the item, store, date and price on your device. It tracks every warranty, warns you before one runs out, and builds a home inventory you can export for insurance. All offline. Nothing leaves your phone.</div>
+      <div class="product-btns">
+        <a class="btn btn-dark" href="#" onclick="return false;">
+          <svg class="apple" viewBox="0 0 24 24"><path d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.23 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.28-1.27 3.13-2.53.99-1.45 1.4-2.86 1.42-2.93-.03-.01-2.72-1.04-2.75-4.12zM14.7 4.5c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-3 1.54-.66.76-1.24 1.98-1.08 3.15 1.14.09 2.3-.58 3.02-1.44z"/></svg>
+          <span><span class="b-small">Soon on the</span><span class="b-big">App Store</span></span>
+        </a>
+        <a class="btn btn-ghost" href="kepto.html"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Learn more</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="div-label"><span>Get in touch</span></div>
+  <div class="contact">
+    <div class="contact-h">Working on something, or just want to say hello?</div>
+    <a class="contact-mail" href="mailto:hello@retrieverlab.com">hello@retrieverlab.com</a>
+  </div>
+
+  <!-- BARCODE FOOTER -->
+  <div class="barcode"></div>
+  <div class="barcode-num">R E T R I E V E R · L A B</div>
+  <div class="foot">© 2026 Retriever Lab · Made with care</div>
+
+  <div class="sheet-bottom"></div>
+</div>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.25,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
