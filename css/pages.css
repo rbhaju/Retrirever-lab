@@ -6,9 +6,9 @@
 
 /* document sheet */
 .doc{
-  max-width:680px;margin:0 auto;background:var(--paper);
+  max-width:420px;margin:0 auto;background:var(--paper);
   position:relative;z-index:1;color:var(--ink);
-  padding:48px 44px;
+  padding:40px 34px;
   box-shadow:0 4px 10px rgba(80,60,30,0.15),0 30px 70px rgba(80,60,30,0.25);
   animation:printIn 900ms cubic-bezier(0.16,1,0.3,1) both;
   font-family:var(--mono);
@@ -44,12 +44,12 @@
 .support-mail .ic{width:20px;height:20px;stroke:var(--paper);}
 .support-sub{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:20px;line-height:1.7;}
 
-.doc-bottom{position:relative;height:18px;margin:28px -44px -48px;background:var(--paper);-webkit-mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;-webkit-mask-size:18px 18px;mask-size:18px 18px;}
+.doc-bottom{position:relative;height:18px;margin:28px -34px -40px;background:var(--paper);-webkit-mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;-webkit-mask-size:18px 18px;mask-size:18px 18px;}
 .doc-foot{position:relative;z-index:1;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-top:30px;}
 
 @media(prefers-reduced-motion:reduce){.doc{animation:none;}}
-@media(max-width:560px){
-  .doc{padding:36px 26px;}
-  .doc-bottom{margin:28px -26px -36px;}
-  .doc-title{font-size:25px;}
+/* desktop: widen to match the receipt pages (600px) */
+@media(min-width:760px){
+  .doc{max-width:600px;padding:48px 50px;}
+  .doc-bottom{margin:28px -50px -48px;}
 }
