@@ -41,6 +41,7 @@
 .support-sub{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:20px;line-height:1.7;}
 
 .doc-bottom{position:relative;height:18px;margin:28px -44px -48px;background:var(--paper);-webkit-mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;-webkit-mask-size:18px 18px;mask-size:18px 18px;}
+.doc-foot{position:relative;z-index:1;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-top:30px;}
 
 @media(prefers-reduced-motion:reduce){.doc{animation:none;}}
 @media(max-width:560px){

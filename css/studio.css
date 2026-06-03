@@ -80,6 +80,21 @@
 .div-label span{background:var(--paper);padding:0 12px;position:relative;}
 .div-label::before{content:'';position:absolute;left:0;right:0;top:50%;border-top:1.5px dashed var(--dash);z-index:-1;}
 
+/* ---- About the maker ---- */
+.about{position:relative;z-index:1;}
+.about-row{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.about-avatar{
+  width:52px;height:52px;border-radius:50%;flex-shrink:0;
+  background:var(--ink);color:var(--amber);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:13px;font-weight:700;
+  letter-spacing:-0.3px;text-transform:uppercase;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  overflow:hidden;text-align:center;line-height:1;padding:4px;
+}
+.about-name{font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:-0.3px;color:var(--ink);}
+.about-role{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:3px;letter-spacing:0.04em;}
+
 /* ---- Contact + footer ---- */
 .contact{position:relative;z-index:1;padding:26px 0 4px;text-align:center;}
 .contact-h{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--ink);}
