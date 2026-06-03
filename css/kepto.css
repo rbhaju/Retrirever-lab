@@ -37,8 +37,7 @@
 
 /* ---- Brand header ---- */
 .r-brand{text-align:center;position:relative;z-index:1;}
-.r-mark{width:54px;height:54px;border-radius:13px;background:var(--amber);display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 4px 14px rgba(224,169,46,0.3);}
-.r-mark .ic{width:30px;height:30px;stroke:var(--ink);stroke-width:2.2;}
+.r-logo{height:72px;width:auto;display:block;margin:0 auto 14px;}
 .r-name{font-family:var(--font-display);font-size:38px;font-weight:700;letter-spacing:-1px;line-height:1;color:var(--ink);}
 .r-tagline{font-size:11px;color:var(--ink-3);letter-spacing:0.14em;text-transform:uppercase;margin-top:10px;}
 .r-addr{font-size:10px;color:var(--ink-3);margin-top:6px;letter-spacing:0.05em;}
