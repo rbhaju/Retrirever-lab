@@ -56,6 +56,7 @@
 .product-head{display:flex;align-items:center;gap:14px;}
 .product-mark{width:50px;height:50px;border-radius:12px;background:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(224,169,46,0.3);}
 .product-mark .ic{width:28px;height:28px;stroke:var(--ink);stroke-width:2.2;}
+.product-mark img{width:28px;height:auto;display:block;}
 .product-logo{height:54px;width:auto;display:block;flex-shrink:0;}
 .product-name{font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.4px;color:var(--ink);}
 .product-tag{font-size:11px;color:var(--ink-3);margin-top:3px;letter-spacing:0.04em;}
@@ -64,12 +65,14 @@
 .product-status .ic{width:12px;height:12px;stroke:var(--stamp-warn);}
 
 /* ---- Buttons ---- */
-.product-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.product-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;justify-content:center;width:100%;}
 .btn{display:inline-flex;align-items:center;gap:9px;border:none;border-radius:10px;padding:13px 20px;cursor:pointer;text-decoration:none;font-family:var(--font-body);font-weight:600;font-size:14px;transition:transform 150ms,box-shadow 150ms;}
 .btn:active{transform:scale(0.97);}
-.btn-dark{background:var(--ink);color:var(--paper);box-shadow:0 6px 18px rgba(0,0,0,0.25);}
-.btn-dark:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,0.35);}
-.btn-dark .apple{width:22px;height:22px;fill:var(--paper);stroke:none;}
+.btn-dark{background:var(--ink);color:var(--paper);box-shadow:0 6px 18px rgba(0,0,0,0.25);border:0;min-width:230px;min-height:64px;justify-content:center;padding:12px 20px;}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,0.35);background:var(--ink);}
+.btn-dark .apple,.btn-dark .ic{width:22px;height:auto;fill:var(--paper);stroke:none;}
+.btn-dark .b-small{display:block;text-align:center;line-height:1;}
+.btn-dark .b-big{display:block;text-align:center;line-height:1.05;}
 .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
 .btn-ghost:hover{background:var(--ink);color:var(--paper);}
 .btn-ghost .ic{width:16px;height:16px;}
