@@ -14,6 +14,15 @@
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
   .chip{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-2);border:1.5px solid var(--dash);border-radius:999px;padding:7px 13px;background:#FFFDF7;}
   .cta-row{display:flex;justify-content:center;margin-top:24px;}
+  /* partner form */
+  #partner{scroll-margin-top:80px;}
+  .form{margin-top:22px;text-align:left;}
+  .form-row{margin-bottom:14px;}
+  .form-label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+  .form-input,.form-textarea,.form-select{width:100%;font-family:var(--font-body);font-size:14px;color:var(--ink);background:#FFFDF7;border:1.5px solid var(--paper-edge);border-radius:8px;padding:11px 13px;outline:none;transition:border-color 150ms;}
+  .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--amber);}
+  .form-textarea{resize:vertical;min-height:92px;}
+  .form-actions{display:flex;justify-content:center;margin-top:20px;}
 </style>
 </head>
 <body>
@@ -57,7 +66,7 @@
     <div class="headline">Movie and concert tickets,<br>right in <span class="hl">Apple &amp; Google Wallet</span>.</div>
     <div class="para">Issue tickets your customers already know how to use. The pass lands straight in their phone wallet — no app to download, no paper to lose, no screenshots to fumble at the door. Faster entry for them, fewer no-shows for you.</div>
     <div class="cta-row">
-      <a class="btn btn-dark" href="mailto:rohanbhaju@gmail.com?subject=Tickets%20%E2%80%94%20Partner%20with%20us">
+      <a class="btn btn-dark" href="#partner">
         <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         <span><span class="b-small">Cinemas · venues · promoters</span><span class="b-big">Partner with us</span></span>
       </a>
@@ -123,15 +132,58 @@
     </div>
   </div>
 
-  <!-- CTA -->
-  <div class="contact">
+  <!-- CTA / PARTNER FORM -->
+  <div class="contact" id="partner">
     <div class="contact-h">Run a venue, or selling tickets?</div>
     <div class="para" style="text-align:center;margin-top:10px;">We're partnering with a first group of venues. Tell us about yours and we'll get you set up.</div>
-    <div class="cta-row">
-      <a class="btn btn-dark" href="mailto:rohanbhaju@gmail.com?subject=Tickets%20%E2%80%94%20Partner%20with%20us">
-        <svg class="ic" viewBox="0 0 24 24"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5Z"/><path d="M5 7l7 5 7-5"/></svg>
-        <span><span class="b-small">rohanbhaju@gmail.com</span><span class="b-big">Partner with us</span></span>
-      </a>
+
+    <form class="form" action="https://formsubmit.co/rohanbhaju@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Tickets — Partner with us">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://retrieverlabs.com.au/tickets/?sent=1">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form-row">
+        <label class="form-label" for="venue">Venue name</label>
+        <input class="form-input" id="venue" type="text" name="Venue" required>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="name">Your name</label>
+        <input class="form-input" id="name" type="text" name="Name" required>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-input" id="email" type="email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="type">What you sell</label>
+        <select class="form-select" id="type" name="What you sell">
+          <option>Cinema</option>
+          <option>Concert venue</option>
+          <option>Promoter</option>
+          <option>Festival</option>
+          <option>Theatre</option>
+          <option>Comedy club</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="message">Message</label>
+        <textarea class="form-textarea" id="message" name="Message" placeholder="Tell us a little about your venue and ticket volume."></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-dark" type="submit">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <span class="b-big">Send</span>
+        </button>
+      </div>
+    </form>
+
+    <!-- shown after a successful submit (FormSubmit redirects back with ?sent=1) -->
+    <div class="form-thanks" id="formThanks" style="display:none;text-align:center;padding:10px 0;">
+      <div class="contact-h">Thanks — your message is on its way.</div>
+      <div class="para" style="margin-top:8px;">We'll be in touch at the email you gave us. Talk soon.</div>
     </div>
   </div>
 
@@ -150,5 +202,16 @@
 </div>
 
 <script src="../js/reveal.js"></script>
+<script>
+  // After FormSubmit redirects back with ?sent=1, swap the form for a thank-you.
+  if (new URLSearchParams(location.search).get('sent') === '1') {
+    var form = document.querySelector('#partner .form');
+    var thanks = document.getElementById('formThanks');
+    if (form) form.style.display = 'none';
+    if (thanks) thanks.style.display = 'block';
+    var anchor = document.getElementById('partner');
+    if (anchor) anchor.scrollIntoView();
+  }
+</script>
 </body>
 </html>
