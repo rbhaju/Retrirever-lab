@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tickets · Retriever Labs</title>
+<meta name="description" content="Movie and concert tickets, right in Apple and Google Wallet. A Retriever Labs product for cinemas, venues, promoters and festivals.">
+<link rel="icon" type="image/png" href="../img/logo.png">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/studio.css">
+<style>
+  /* tickets-specific bits, scoped to this draft */
+  .step-num{font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--amber-deep);letter-spacing:0.1em;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-2);border:1.5px solid var(--dash);border-radius:999px;padding:7px 13px;background:#FFFDF7;}
+  .cta-row{display:flex;justify-content:center;margin-top:24px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="tb-home" href="../index.html">
+    <img class="tb-logo" src="../img/logo.png" alt="Retriever Labs">
+    <span class="tb-name">Retriever Labs</span>
+  </a>
+  <nav class="tb-nav">
+    <a href="../index.html">Home</a>
+    <a href="https://theregulars.com.au" target="_blank" rel="noopener">Regulars (café loyalty)</a>
+  </nav>
+</div>
+
+<div class="bg-slip s1"></div>
+<div class="bg-slip s2"></div>
+<div class="bg-slip s3"></div>
+<div class="bg-slip s4"></div>
+
+<div class="sheet">
+  <div class="sheet-top"></div>
+
+  <!-- LETTERHEAD -->
+  <div class="lh">
+    <div class="lh-brand">
+      <img class="lh-logo" src="../img/logo.png" alt="Retriever Labs">
+      <div>
+        <div class="lh-name">Retriever Labs</div>
+        <div class="lh-sub">Tickets · Wallet passes</div>
+      </div>
+    </div>
+    <div class="lh-meta">EST. 2026<br>SYDNEY<br>NO. 003</div>
+  </div>
+
+  <div class="stamp-corner">Now in<br>the works</div>
+
+  <!-- HERO -->
+  <div class="block">
+    <div class="eyebrow">For cinemas &amp; venues</div>
+    <div class="headline">Movie and concert tickets,<br>right in <span class="hl">Apple &amp; Google Wallet</span>.</div>
+    <div class="para">Issue tickets your customers already know how to use. The pass lands straight in their phone wallet — no app to download, no paper to lose, no screenshots to fumble at the door. Faster entry for them, fewer no-shows for you.</div>
+    <div class="cta-row">
+      <a class="btn btn-dark" href="mailto:rohanbhaju@gmail.com?subject=Tickets%20%E2%80%94%20Partner%20with%20us">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <span><span class="b-small">Cinemas · venues · promoters</span><span class="b-big">Partner with us</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="div-label"><span>How it works</span></div>
+  <div class="block">
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M9 15l6-6"/><path d="M10.5 7.5l1.6-1.6a3.5 3.5 0 0 1 5 5l-1.6 1.6"/><path d="M13.5 16.5l-1.6 1.6a3.5 3.5 0 0 1-5-5l1.6-1.6"/></svg></div>
+      <div class="p-body"><div class="step-num">STEP 1</div><div class="p-title">Connect</div><div class="p-desc">Link your box office or ticketing flow. We map your events, sessions and seat data — no replacement of your existing system.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h15A1.5 1.5 0 0 1 21 8.5v2a2 2 0 0 0 0 4v2A1.5 1.5 0 0 1 19.5 18h-15A1.5 1.5 0 0 1 3 16.5v-2a2 2 0 0 0 0-4Z"/><path d="M14 7v11"/></svg></div>
+      <div class="p-body"><div class="step-num">STEP 2</div><div class="p-title">Issue</div><div class="p-desc">Every buyer gets an Apple or Google Wallet pass the moment they purchase — branded with your venue's logo and colours.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8"/><path d="M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8"/><path d="M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16"/><path d="M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><path d="M4 12h16"/></svg></div>
+      <div class="p-body"><div class="step-num">STEP 3</div><div class="p-title">Scan in</div><div class="p-desc">At the door, staff scan the pass and the guest is in. Works on the hardware you already have, even when the line is moving fast.</div></div>
+    </div>
+  </div>
+
+  <!-- WHY VENUES USE IT -->
+  <div class="div-label"><span>Why venues use it</span></div>
+  <div class="block">
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M7 3h10a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 17 21H7a1.5 1.5 0 0 1-1.5-1.5v-15A1.5 1.5 0 0 1 7 3Z"/><path d="M10 18h4"/></svg></div>
+      <div class="p-body"><div class="p-title">No app friction</div><div class="p-desc">The pass lives in the wallet they already have. Nothing to install, nothing to sign up for.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7 2.5 7H3.5S6 15 6 9Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div>
+      <div class="p-body"><div class="p-title">Fewer no-shows</div><div class="p-desc">Lock-screen reminders surface the ticket before showtime, so more people actually turn up.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div>
+      <div class="p-body"><div class="p-title">Faster entry</div><div class="p-desc">A single tap-and-scan at the gate. Queues move quicker and doors open on time.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 6.5-7 8.5C8 18.5 5 16 5 12V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div class="p-body"><div class="p-title">Harder to fake</div><div class="p-desc">Secure, dynamic passes — not a screenshot that can be forwarded or copied around.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12.5 11.5 4H20v8.5L11.5 21Z"/><circle cx="16" cy="8" r="1.1"/></svg></div>
+      <div class="p-body"><div class="p-title">Your brand</div><div class="p-desc">Your logo, your colours, your name on every pass — front and centre in the customer's wallet.</div></div>
+    </div>
+    <div class="principle reveal">
+      <div class="p-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg></div>
+      <div class="p-body"><div class="p-title">Live updates</div><div class="p-desc">Time changes, gate moves, seat swaps — push them to the pass instantly. No reprints, no confusion.</div></div>
+    </div>
+  </div>
+
+  <!-- BUILT FOR -->
+  <div class="div-label"><span>Built for</span></div>
+  <div class="block">
+    <div class="chips">
+      <span class="chip">Cinemas</span>
+      <span class="chip">Concert venues</span>
+      <span class="chip">Promoters</span>
+      <span class="chip">Festivals</span>
+      <span class="chip">Theatres</span>
+      <span class="chip">Comedy clubs</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="contact">
+    <div class="contact-h">Run a venue, or selling tickets?</div>
+    <div class="para" style="text-align:center;margin-top:10px;">We're partnering with a first group of venues. Tell us about yours and we'll get you set up.</div>
+    <div class="cta-row">
+      <a class="btn btn-dark" href="mailto:rohanbhaju@gmail.com?subject=Tickets%20%E2%80%94%20Partner%20with%20us">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5Z"/><path d="M5 7l7 5 7-5"/></svg>
+        <span><span class="b-small">rohanbhaju@gmail.com</span><span class="b-big">Partner with us</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- BARCODE FOOTER -->
+  <div class="barcode reveal"></div>
+  <div class="barcode-num">T I C K E T S · 2 0 2 6</div>
+
+  <div class="foot-thanks" style="text-align:center;font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--ink);margin-top:22px;">A Retriever Labs product.</div>
+  <div class="foot-links" style="display:flex;justify-content:center;gap:18px;margin-top:12px;font-family:var(--mono);font-size:12px;">
+    <a href="../index.html" style="color:var(--ink);text-decoration:none;border-bottom:1.5px dashed var(--ink-3);padding-bottom:2px;">Retriever Labs</a>
+    <a href="https://theregulars.com.au" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none;border-bottom:1.5px dashed var(--ink-3);padding-bottom:2px;">Regulars</a>
+  </div>
+  <div class="foot">Designed &amp; built in Sydney</div>
+
+  <div class="sheet-bottom"></div>
+</div>
+
+<script src="../js/reveal.js"></script>
+</body>
+</html>
