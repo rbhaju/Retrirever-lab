@@ -20,9 +20,9 @@
 
 .doc-head{position:relative;z-index:1;padding-bottom:20px;border-bottom:2px dashed var(--dash);margin-bottom:28px;text-align:center;}
 .doc-brand-logo{height:46px;width:auto;display:block;margin:0 auto 14px;}
-.doc-brand-lockup{display:flex;align-items:center;justify-content:center;gap:11px;margin-bottom:16px;}
-.doc-brand-lockup img{height:38px;width:auto;display:block;}
-.doc-wordmark{font-family:var(--font-display);font-weight:700;font-size:25px;letter-spacing:-0.5px;line-height:1;color:var(--ink);}
+.doc-brand-lockup{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:18px;}
+.doc-brand-lockup img{height:26px;width:auto;display:block;}
+.doc-wordmark{font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:-0.3px;line-height:1;color:var(--ink);}
 .doc-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;}
 .doc-title{font-family:var(--font-display);font-size:30px;font-weight:700;letter-spacing:-0.6px;line-height:1.1;color:var(--ink);}
 .doc-updated{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:10px;}
