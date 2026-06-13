@@ -1,0 +1,144 @@
+/* =========================================================
+   Retriever Labs — base.css
+   Shared across all pages: design tokens, reset, fonts,
+   desk background, top bar, and paper/receipt mechanics.
+   ========================================================= */
+
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@400,500,600&f[]=space-mono@400,700&display=swap');
+
+/* ---- Reset ---- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+/* ---- Design tokens ---- */
+:root{
+  /* paper + ink */
+  --paper:#F6F0E2;
+  --paper-edge:#E2DAC4;
+  --ink:#211C12;
+  --ink-2:#5A5340;
+  --ink-3:#8C846D;
+  --dash:#C8BFA6;
+
+  /* brand accent */
+  --amber:#E0A92E;
+  --amber-deep:#B6841A;
+
+  /* status stamps */
+  --stamp-ok:#2E7D46;
+  --stamp-warn:#C17A12;
+  --stamp-danger:#BC3B36;
+
+  /* desk */
+  --light-desk:#E7DCC4;
+
+  /* type */
+  --font-display:'Clash Display',sans-serif;
+  --font-body:'General Sans',-apple-system,sans-serif;
+  --mono:'Space Mono','Courier New',monospace;
+
+  /* spacing scale */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+}
+
+/* ---- Base page ---- */
+html{scroll-behavior:smooth;}
+body{
+  background:
+    radial-gradient(1200px 800px at 50% -10%, #F0E7D2, transparent 70%),
+    radial-gradient(900px 600px at 85% 100%, #DED2B6, transparent 60%),
+    var(--light-desk);
+  font-family:var(--font-body);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  padding:92px 20px 100px;
+  position:relative;
+  overflow-x:hidden;
+}
+/* faint warm grain over the whole desk */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.4;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.6 0 0 0 0 0.54 0 0 0 0 0.42 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E");
+}
+
+/* ---- Inline icon helper ---- */
+.ic{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ---- Scattered background receipts (desktop only) ---- */
+.bg-slip{
+  position:fixed;z-index:0;pointer-events:none;background:#EFE7D4;
+  box-shadow:0 18px 44px rgba(80,60,30,0.13);display:none;
+  background-image:repeating-linear-gradient(0deg, transparent 0 14px, rgba(120,100,70,0.05) 14px 15px);
+}
+.bg-slip::before,.bg-slip::after{content:'';position:absolute;left:0;right:0;height:7px;background-size:14px 7px;background-repeat:repeat-x;}
+.bg-slip::before{top:-1px;background-image:radial-gradient(circle at 7px -3px,transparent 5px,#EFE7D4 5px);}
+.bg-slip::after{bottom:-1px;background-image:radial-gradient(circle at 7px 8px,transparent 5px,#EFE7D4 5px);}
+.bg-slip.s1{width:230px;height:360px;top:12%;left:calc(50% - 470px);transform:rotate(-9deg);opacity:0.55;}
+.bg-slip.s2{width:200px;height:300px;top:46%;left:calc(50% - 520px);transform:rotate(6deg);opacity:0.42;}
+.bg-slip.s3{width:250px;height:400px;top:16%;right:calc(50% - 500px);transform:rotate(8deg);opacity:0.55;}
+.bg-slip.s4{width:180px;height:260px;top:52%;right:calc(50% - 540px);transform:rotate(-7deg);opacity:0.4;}
+@media(min-width:1080px){.bg-slip{display:block;}}
+@media(prefers-reduced-motion:no-preference){.bg-slip{animation:slipfloat 700ms ease-out both;}}
+@keyframes slipfloat{from{opacity:0;}}
+
+/* ---- Shared top bar / nav ---- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 22px;
+  background:rgba(231,220,196,0.85);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(120,90,40,0.12);
+}
+.tb-home{display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer;}
+.tb-logo{height:28px;width:auto;display:block;}
+.tb-name{font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:-0.3px;color:var(--ink);}
+/* right-side nav links */
+.tb-home{flex-shrink:0;}            /* keep logo from being squeezed by the nav */
+.tb-nav{display:flex;align-items:center;gap:4px;flex-wrap:nowrap;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.tb-nav::-webkit-scrollbar{display:none;}
+.tb-nav a{
+  flex-shrink:0;
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--ink-2);text-decoration:none;letter-spacing:0.02em;white-space:nowrap;
+  padding:7px 11px;border-radius:7px;transition:background 150ms,color 150ms;
+}
+.tb-nav a:hover{color:var(--ink);background:rgba(120,90,40,0.10);}
+.tb-nav a.active{color:var(--ink);background:rgba(224,169,46,0.22);}
+.tb-nav .lbl-short{display:none;}   /* full label on desktop */
+@media(max-width:600px){
+  .topbar{padding:10px 14px;}
+  .tb-name{display:none;}            /* logo only on small screens, saves room for nav */
+  .tb-nav{gap:2px;}
+  .tb-nav a{padding:7px 7px;font-size:11px;letter-spacing:0;}
+  .tb-nav .lbl-full{display:none;}   /* swap to short label so the bar fits */
+  .tb-nav .lbl-short{display:inline;}
+}
+@media(max-width:430px){
+  .tb-nav a{padding:6px 5px;font-size:10px;}
+}
+
+/* ---- Shared scroll-reveal ---- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 600ms cubic-bezier(0.16,1,0.3,1),transform 600ms cubic-bezier(0.16,1,0.3,1);}
+.reveal.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* ---- Shared footer links row ---- */
+.foot-links{text-align:center;font-size:11px;position:relative;z-index:1;padding-bottom:6px;}
+.foot-links a{color:var(--ink-2);text-decoration:none;border-bottom:1px dashed var(--ink-3);padding-bottom:1px;margin:0 8px;font-family:var(--mono);}
+.foot-links a:hover{color:var(--ink);}
+
+/* ---- Shared contact form ---- */
+.form{margin-top:22px;text-align:left;}
+.form-row{margin-bottom:14px;}
+.form-label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;}
+.form-input,.form-textarea,.form-select{width:100%;font-family:var(--font-body);font-size:14px;color:var(--ink);background:#FFFDF7;border:1.5px solid var(--paper-edge);border-radius:8px;padding:11px 13px;outline:none;transition:border-color 150ms;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--amber);}
+.form-textarea{resize:vertical;min-height:92px;}
+.form-actions{display:flex;justify-content:center;margin-top:20px;}
+.form-submit{display:inline-flex;align-items:center;gap:9px;border:none;border-radius:10px;padding:14px 26px;cursor:pointer;background:var(--ink);color:var(--paper);font-family:var(--font-display);font-weight:600;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,0.25);transition:transform 150ms,box-shadow 150ms;}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,0.35);}
+.form-submit:active{transform:scale(0.98);}
+.form-submit .ic{width:18px;height:18px;stroke:var(--paper);}

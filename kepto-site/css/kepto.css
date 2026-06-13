@@ -1,0 +1,129 @@
+/* =========================================================
+   Retriever Labs — kepto.css
+   Styles specific to the Kepto product page (kepto.html).
+   Shared tokens, top bar, background and .reveal live in base.css.
+   ========================================================= */
+
+/* ---- The receipt ---- */
+.receipt{
+  max-width:420px;margin:0 auto;background:var(--paper);
+  position:relative;z-index:1;color:var(--ink);
+  padding:40px 34px 0;
+  box-shadow:0 4px 10px rgba(80,60,30,0.15),0 30px 70px rgba(80,60,30,0.25);
+  font-family:var(--mono);
+  transform-origin:top center;
+  animation:printIn 1100ms cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes printIn{
+  0%{opacity:0;transform:translateY(-40px) scaleY(0.4);filter:blur(2px);}
+  55%{opacity:1;filter:blur(0);}
+  100%{opacity:1;transform:translateY(0) scaleY(1);filter:blur(0);}
+}
+.receipt::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:0.4;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.55 0 0 0 0 0.5 0 0 0 0 0.4 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.receipt-top{
+  position:absolute;top:-1px;left:0;right:0;height:9px;
+  background:radial-gradient(circle at 8px -4px,transparent 6px,var(--paper) 6px) repeat-x;
+  background-size:16px 9px;z-index:2;
+}
+.receipt-bottom{
+  position:relative;height:18px;margin:0 -34px;background:var(--paper);
+  -webkit-mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;
+  mask:radial-gradient(circle at 9px 18px,transparent 8px,#000 8px) repeat-x;
+  -webkit-mask-size:18px 18px;mask-size:18px 18px;
+}
+
+/* ---- Brand header ---- */
+.r-brand{text-align:center;position:relative;z-index:1;}
+.r-logo{height:72px;width:auto;display:block;margin:0 auto 14px;}
+.r-name{font-family:var(--font-display);font-size:38px;font-weight:700;letter-spacing:-1px;line-height:1;color:var(--ink);}
+.r-tagline{font-size:11px;color:var(--ink-3);letter-spacing:0.14em;text-transform:uppercase;margin-top:10px;}
+.r-addr{font-size:10px;color:var(--ink-3);margin-top:6px;letter-spacing:0.05em;}
+
+/* ---- Dividers ---- */
+.divider{border:none;border-top:1.5px dashed var(--dash);margin:24px 0;position:relative;z-index:1;}
+.divider-label{position:relative;z-index:1;text-align:center;font-size:10px;letter-spacing:0.2em;color:var(--ink-3);text-transform:uppercase;margin:24px 0 18px;}
+.divider-label span{background:var(--paper);padding:0 12px;position:relative;}
+.divider-label::before{content:'';position:absolute;left:0;right:0;top:50%;border-top:1.5px dashed var(--dash);z-index:-1;}
+
+/* ---- Hero pitch ---- */
+.hero{text-align:center;position:relative;z-index:1;}
+.hero-h{font-family:var(--font-display);font-size:26px;font-weight:600;line-height:1.2;letter-spacing:-0.5px;color:var(--ink);}
+.hero-p{font-size:13px;line-height:1.7;color:var(--ink-2);margin-top:14px;font-family:var(--font-body);}
+
+/* ---- Feature line-items ---- */
+.items{position:relative;z-index:1;}
+.line{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px dashed var(--dash);}
+.line:last-child{border-bottom:none;}
+.line-ic{width:40px;height:40px;border:1.5px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.line-ic .ic{width:21px;height:21px;stroke:var(--ink);}
+.line-body{flex:1;}
+.line-title{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--ink);}
+.line-desc{font-size:12px;line-height:1.6;color:var(--ink-2);margin-top:4px;font-family:var(--font-body);}
+.line-qty{font-size:11px;color:var(--ink-3);align-self:center;white-space:nowrap;}
+.line.reveal:nth-of-type(1){transition-delay:0ms;}
+.line.reveal:nth-of-type(2){transition-delay:80ms;}
+.line.reveal:nth-of-type(3){transition-delay:160ms;}
+.line.reveal:nth-of-type(4){transition-delay:240ms;}
+
+/* ---- Privacy stamp ---- */
+.stamp-row{display:flex;justify-content:center;margin:8px 0 4px;position:relative;z-index:1;}
+.privacy-stamp{
+  border:2.5px solid var(--stamp-ok);color:var(--stamp-ok);
+  font-family:var(--font-display);font-size:13px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;padding:10px 18px;border-radius:6px;
+  transform:rotate(-4deg);display:inline-flex;align-items:center;gap:8px;
+  background:rgba(46,125,70,0.06);text-align:center;line-height:1.3;
+}
+.privacy-stamp .ic{width:18px;height:18px;stroke:var(--stamp-ok);flex-shrink:0;}
+/* stamp thumps down on reveal */
+.privacy-stamp.reveal{transform:translateY(18px) rotate(-4deg) scale(1.4);transition:opacity 500ms,transform 500ms cubic-bezier(0.34,1.56,0.64,1);}
+.privacy-stamp.reveal.in{transform:rotate(-4deg) scale(1);}
+
+/* ---- Totals + CTA ---- */
+.totals{position:relative;z-index:1;font-size:13px;}
+.total-row{display:flex;justify-content:space-between;padding:5px 0;color:var(--ink-2);}
+.total-row.grand{border-top:2px solid var(--ink);margin-top:10px;padding-top:12px;font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--ink);}
+.cta-wrap{text-align:center;margin:28px 0 8px;position:relative;z-index:1;}
+.app-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--ink);color:var(--paper);
+  border:none;border-radius:12px;padding:15px 26px;
+  cursor:pointer;text-decoration:none;
+  transition:transform 160ms,box-shadow 160ms;
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+.app-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,0.4);}
+.app-btn:active{transform:translateY(0);}
+.app-btn .apple{width:28px;height:28px;fill:var(--paper);stroke:none;}
+.app-btn-text{text-align:left;}
+.app-btn-small{font-size:9px;letter-spacing:0.08em;opacity:0.8;font-family:var(--font-body);}
+.app-btn-big{font-family:var(--font-display);font-size:17px;font-weight:600;line-height:1.1;}
+.cta-note{font-size:10px;color:var(--ink-3);margin-top:14px;letter-spacing:0.04em;}
+
+/* ---- Barcode footer ---- */
+.barcode{margin:22px 0 6px;height:48px;position:relative;z-index:1;
+  background:repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 1px,transparent 1px,transparent 3px),
+             repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 2px,transparent 2px,transparent 6px),
+             repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 1px,transparent 1px,transparent 4px);
+  background-size:5px 100%,11px 100%,7px 100%;
+}
+.barcode-num{text-align:center;font-size:11px;letter-spacing:0.3em;color:var(--ink-2);margin-top:8px;position:relative;z-index:1;}
+.foot-thanks{text-align:center;font-size:11px;color:var(--ink-3);margin:18px 0 8px;letter-spacing:0.05em;position:relative;z-index:1;}
+.foot-links{text-align:center;font-size:11px;position:relative;z-index:1;padding-bottom:6px;}
+.foot-links a{color:var(--ink-2);text-decoration:none;border-bottom:1px dashed var(--ink-3);padding-bottom:1px;margin:0 8px;}
+.foot-links a:hover{color:var(--ink);}
+.foot-dev{text-align:center;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-top:16px;position:relative;z-index:1;}
+.foot-dev a{color:inherit;text-decoration:none;}
+
+/* ---- Reduced motion ---- */
+@media(prefers-reduced-motion:reduce){.receipt{animation:none;}}
+
+/* ---- Desktop: widen the receipt ---- */
+@media(min-width:760px){
+  .receipt{max-width:600px;padding:48px 50px 0;}
+  .receipt-bottom{margin:0 -50px;}
+  .hero-h{font-size:32px;}
+}
