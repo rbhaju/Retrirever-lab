@@ -1,0 +1,205 @@
+/* =========================================================
+   Atelier Rohan — Pivoine
+   Editorial luxury. Static. Hairlines only.
+   No gradients, no shadows, no glow, no fills on CTAs.
+   ========================================================= */
+
+:root{
+  --blush:#F0E1DE;   /* background */
+  --cream:#F8EDEA;   /* cards / accents */
+  --ink:#43222D;     /* deep plum text */
+  --mauve:#8A666D;   /* muted text */
+  --rose:#E3CDC9;    /* hairlines */
+  --crimson:#8B1E1E; /* accent */
+
+  --serif:'Bodoni Moda', Georgia, serif;
+  --sans:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+body{
+  background:var(--blush);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ---- Layout ---- */
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px;}
+@media(min-width:768px){ .wrap{padding:0 64px;} }
+
+section{padding-block:80px;}
+@media(min-width:900px){ section{padding-block:160px;} }
+
+/* ---- Tracked UI label ---- */
+.label{
+  font-family:var(--sans);
+  font-size:11px;font-weight:500;
+  letter-spacing:.34em;text-transform:uppercase;
+  color:var(--mauve);
+}
+@media(min-width:768px){ .label{font-size:12px;} }
+
+/* ---- Display headlines (Bodoni italic) ---- */
+.display{
+  font-family:var(--serif);
+  font-style:italic;font-weight:500;
+  line-height:1.02;letter-spacing:-.005em;
+  color:var(--ink);
+}
+.display .dot{color:var(--crimson);}
+.h-hero{font-size:clamp(58px,13vw,120px);}
+.h-sec{font-size:clamp(40px,7.5vw,84px);}
+.h-page{font-size:clamp(46px,9vw,96px);}
+
+/* ---- Italic serif & sans body ---- */
+.serif-italic{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--ink);}
+.sans-italic{font-family:var(--sans);font-style:italic;color:var(--mauve);}
+
+.lede{
+  font-family:var(--serif);font-style:italic;font-weight:500;
+  font-size:clamp(20px,2.6vw,28px);line-height:1.5;color:var(--ink);
+}
+
+/* ---- Hairline outlined button (never filled) ---- */
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.7em;
+  font-family:var(--sans);font-size:12px;font-weight:500;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  border:1px solid var(--ink);
+  padding:19px 38px;background:transparent;
+  transition:color .35s ease,border-color .35s ease;
+}
+.btn-outline:hover{color:var(--crimson);border-color:var(--crimson);}
+
+/* ---- App Store badge (hero) ---- */
+.appstore{display:block;height:48px;width:auto;}
+
+/* ---- Centered hairline ornament divider ---- */
+.ornament{
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  color:var(--mauve);font-family:var(--serif);font-style:italic;font-size:18px;
+}
+.ornament::before,.ornament::after{
+  content:'';width:46px;height:1px;background:var(--rose);
+}
+
+/* ---- Masthead ---- */
+.masthead{border-bottom:1px solid var(--rose);}
+.mast-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-block:26px;gap:24px;
+}
+.mast-mark{
+  font-family:var(--serif);font-style:italic;font-weight:500;
+  font-size:21px;letter-spacing:.01em;color:var(--ink);text-decoration:none;
+}
+.mast-nav{display:flex;gap:30px;}
+.mast-nav a{
+  font-family:var(--sans);font-size:11px;font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--mauve);
+  text-decoration:none;transition:color .3s ease;
+}
+.mast-nav a:hover{color:var(--ink);}
+@media(max-width:540px){ .mast-mark{font-size:18px;} .mast-nav{gap:18px;} .mast-nav a{font-size:10px;letter-spacing:.2em;} }
+
+/* ---- Hero ---- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-block:120px 90px;}
+.hero .label{margin-bottom:38px;}
+.hero .h-hero{margin-bottom:34px;max-width:13ch;}
+.hero-sub{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(19px,2.5vw,26px);line-height:1.5;color:var(--ink);max-width:30ch;margin-bottom:48px;}
+.hero-badge{display:inline-block;}
+.hero-scroll{
+  position:absolute;left:26px;bottom:40px;
+  display:flex;align-items:center;gap:16px;
+  font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--mauve);
+}
+.hero-scroll::before{content:'';width:1px;height:46px;background:var(--rose);}
+@media(min-width:768px){ .hero-scroll{left:64px;} }
+
+/* ---- Feature rows ---- */
+.feature{
+  display:grid;grid-template-columns:1fr;gap:48px;align-items:center;
+  padding-block:64px;
+}
+.feature + .feature{border-top:1px solid var(--rose);}
+@media(min-width:900px){
+  .feature{grid-template-columns:1fr 1fr;gap:96px;padding-block:96px;}
+  .feature.flip .feature-text{order:2;}
+  .feature.flip .feature-art{order:1;}
+}
+.feature-num{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.3em;color:var(--crimson);margin-bottom:26px;}
+.feature-h{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(32px,4.6vw,52px);line-height:1.08;color:var(--ink);margin-bottom:22px;}
+.feature-p{font-family:var(--sans);font-style:italic;font-size:17px;line-height:1.7;color:var(--mauve);max-width:34ch;}
+
+/* ---- iPhone placeholder ---- */
+.device-wrap{display:flex;justify-content:center;}
+.device{
+  width:100%;max-width:286px;aspect-ratio:9 / 19.3;
+  border:1px solid var(--ink);border-radius:46px;
+  background:var(--cream);padding:13px;position:relative;
+}
+.device::before{
+  content:'';position:absolute;top:13px;left:50%;transform:translateX(-50%);
+  width:36%;height:22px;background:var(--ink);border-radius:0 0 14px 14px;
+}
+.device .screen{
+  height:100%;border-radius:34px;border:1px solid var(--rose);background:var(--blush);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:30px;
+}
+.device .screen .s-label{font-family:var(--sans);font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--mauve);}
+.device .screen .s-mark{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--ink);}
+.device .screen .s-rule{width:34px;height:1px;background:var(--rose);}
+
+/* ---- Pricing ---- */
+.center{text-align:center;}
+.stack-sm > * + *{margin-top:26px;}
+.price-figure{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,30px);color:var(--crimson);}
+.measure{max-width:46ch;margin-inline:auto;}
+.measure-wide{max-width:60ch;margin-inline:auto;}
+
+/* ---- Promise ---- */
+.promise{background:var(--cream);}
+.promise .display{font-size:clamp(28px,4.4vw,52px);line-height:1.32;}
+
+/* ---- Footer ---- */
+.foot{border-top:1px solid var(--rose);padding-block:64px;}
+.foot-inner{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center;}
+.foot-links{display:flex;gap:30px;}
+.foot-links a{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--mauve);text-decoration:none;transition:color .3s ease;}
+.foot-links a:hover{color:var(--ink);}
+.foot-copy{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mauve);}
+.foot-tag{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);}
+
+/* ---- Editorial document (support / privacy) ---- */
+.doc-head{padding-block:90px 60px;}
+@media(min-width:900px){ .doc-head{padding-block:150px 80px;} }
+.doc-head .label{margin-bottom:34px;}
+.doc-body{padding-bottom:120px;}
+.doc-body p{font-size:16.5px;line-height:1.85;color:var(--ink);max-width:64ch;margin-bottom:26px;}
+.doc-body p.muted{color:var(--mauve);}
+.doc-body .serif-italic.block{display:block;font-size:clamp(22px,3vw,30px);line-height:1.5;margin:10px 0 30px;}
+.doc-section{padding-block:48px;border-top:1px solid var(--rose);}
+.doc-section h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,3.6vw,40px);color:var(--ink);margin-bottom:22px;}
+.doc-section h3{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--crimson);margin:34px 0 14px;}
+.doc-meta{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--mauve);margin-top:40px;}
+
+/* FAQ */
+.faq{border-top:1px solid var(--rose);padding-block:42px;}
+.faq .q{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:18px;}
+.faq .a{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(19px,2.4vw,24px);line-height:1.5;color:var(--mauve);max-width:58ch;}
+
+.contact-line{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,30px);color:var(--ink);}
+.contact-line a{color:var(--crimson);text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:2px;}
+.contact-line a:hover{border-color:var(--crimson);}
+
+/* ---- Subtle scroll fade ---- */
+.fade{opacity:0;transform:translateY(18px);transition:opacity 1.1s ease,transform 1.1s ease;}
+.fade.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} .fade{opacity:1;transform:none;transition:none;} }
