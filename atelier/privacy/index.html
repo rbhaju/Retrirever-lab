@@ -26,64 +26,62 @@
 
   <div class="doc-head fade">
     <div class="label">Atelier Rohan · L'Étude de Conservation</div>
-    <h1 class="display h-page">L'Étude de Conservation · Privacy Notice<span class="dot">.</span></h1>
-    <div class="doc-meta">Version 1.0 · revised June 11, 2026</div>
+    <h1 class="display h-page">Privacy Notice<span class="dot">.</span></h1>
+    <div class="doc-meta">Version 1.0 · revised June 13, 2026</div>
   </div>
 
   <div class="doc-body">
-    <p class="fade">Atelier Rohan is composed upon a single principle: that the record of what you own is yours alone. This notice sets out, plainly, how your information is treated. It is written for clarity, and is not a substitute for legal counsel.</p>
-
-    <span class="serif-italic block fade">Your cabinet stays on your device — and the studio is built so that it cannot be otherwise.</span>
+    <p class="serif-italic block fade">The atelier is built for one. Your cabinet, your inventory, your collection — kept in private custody. Below is a complete accounting of how Atelier Rohan treats your data.</p>
 
     <div class="doc-section fade">
-      <h2>The cabinet</h2>
-      <p>Every formulation you record — its brand, its ingredients, the day you unsealed it, its place in your routine — is stored locally upon your device. Retriever Labs operates no server for this purpose and receives no copy. We do not know what you collect.</p>
+      <h2>I. What We Store</h2>
+      <p>Everything stays on your device. Each formulation you log — its Maison, name, opened date, PAO, category, valuation, and ingredient text — is written to SwiftData, Apple's local persistence framework. No account is required to use the atelier. No password. No email. You are anonymous to us.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>iCloud synchronisation</h2>
-      <p>Should you remain signed into iCloud, your cabinet is synchronised to your own private iCloud account and shared between the Apple devices that share that account. This passage moves directly between your device and Apple. The studio neither sees nor stores it.</p>
+      <h2>II. iCloud Synchronization (Optional)</h2>
+      <p>If you enable Cabinet Sync, your formulations mirror across every Apple device signed into your iCloud account. This passes through Apple's CloudKit infrastructure under your Apple ID — Atelier Rohan never sees the data in transit. You can disable sync at any time from Settings → Cabinet Sync, returning the catalog to local-only custody. Changes to this preference take effect on next launch.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>The optical scanner</h2>
-      <p>When you read a label or a period-after-opening marker, the image is processed entirely upon your device using Apple's Vision framework. Neither the photograph nor the text drawn from it is ever transmitted over the network. The original image, if retained, is kept locally beside the record it describes.</p>
+      <h2>III. La Registre (Open Beauty Facts)</h2>
+      <p>When you search for a product in the Add sheet, the query you type is sent to the Open Beauty Facts API — a public, community-built database of approximately 150,000 cosmetic products. No user identifier accompanies the request; the API receives only the search text and a generic User-Agent string. Open Beauty Facts is operated independently of Atelier Rohan. See <a href="https://openbeautyfacts.org">openbeautyfacts.org</a> for their terms.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>The Maison Registry</h2>
-      <p>When you search for a brand, an ingredient list, or a barcode, the application may query Open Beauty Facts, an open and public registry, to autofill those details at your request. Such a query carries only the term you are searching for. It does not carry your identity, your cabinet, or any record of what you own.</p>
+      <h2>IV. L'Analyseur (Optical Scanner)</h2>
+      <p>When you use the ingredient scanner, your camera feed is processed entirely on-device using Apple's Vision framework. No images are saved. No frames are transmitted. The recognized text is written to your local cabinet alongside the formulation you create.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>No account</h2>
-      <p>There is no account to create, no password to keep, and no electronic mail address required to use Atelier Rohan. You are not registered with us, because there is no register.</p>
+      <h2>V. Oxidation Advisories</h2>
+      <p>Notifications are scheduled as local advisories by iOS, fired thirty days before each formulation crosses its Period After Opening expiry. Nothing is sent to a remote server. You can disable them at any time in Settings → Formula Correspondence.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>No advertisement, no measurement</h2>
-      <p>The application contains no advertising, no advertising identifier, no analytics, no crash telemetry, and no tracking of any kind. Such cookies as the website employs are functional only, and serve no measurement.</p>
+      <h2>VI. Analytics &amp; Tracking</h2>
+      <p>There are none. Atelier Rohan does not embed third-party analytics SDKs, advertising identifiers, or tracking pixels. The atelier does not know how many times you have opened the app or which screens you have visited.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>Drawing out your records</h2>
-      <p>Your records may be exported at any time and taken wherever you wish. Because the cabinet resides on your device, removing the application removes the data with it; where iCloud is in use, you may also remove the cabinet from your iCloud account through Apple's settings.</p>
+      <h2>VII. Data Deletion</h2>
+      <p>To clear your cabinet, navigate to Settings → Inventory Storage → Delete All Formulations. This permanently removes every formulation from local storage and, if Cabinet Sync was enabled, from iCloud across all your devices. The deletion is immediate and irreversible. To delete a single formulation, long-press the card and tap Delete.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>Children</h2>
-      <p>Atelier Rohan is intended for adult collectors and is not directed to children. We knowingly gather nothing from anyone, of any age.</p>
+      <h2>VIII. Children</h2>
+      <p>Atelier Rohan is not designed for users under the age of 13 and does not knowingly collect data from minors.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>Revisions</h2>
-      <p>Should this notice be revised, the version and date above will be amended accordingly. Material changes will be reflected within the application.</p>
+      <h2>IX. Revisions to this Notice</h2>
+      <p>Any material revision to this notice will be shipped as an update to the app and is dated at the top of this document. By continuing to use Atelier Rohan after a revision, you accept the updated notice.</p>
     </div>
 
     <div class="doc-section fade">
-      <h2>Correspondence</h2>
-      <p>Questions regarding this notice are most welcome. You may write to us by way of the <a href="../support.html" style="color:var(--crimson);text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:1px;">Correspondence</a> page.</p>
-      <div class="doc-meta">Version 1.0 · revised June 11, 2026</div>
+      <h2>X. Correspondence</h2>
+      <p>For privacy questions, you may write to us by way of the <a href="../support.html">Correspondence</a> page.</p>
+      <div class="doc-meta">Version 1.0 · revised June 13, 2026</div>
     </div>
   </div>
 

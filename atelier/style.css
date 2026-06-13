@@ -189,6 +189,8 @@ section{padding-block:80px;}
 .doc-body{padding-bottom:120px;}
 .doc-body p{font-size:16.5px;line-height:1.85;color:var(--ink);max-width:64ch;margin-bottom:26px;}
 .doc-body p.muted{color:var(--mauve);}
+.doc-body a{color:var(--crimson);text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:1px;}
+.doc-body a:hover{border-color:var(--crimson);}
 .doc-body .serif-italic.block{display:block;font-size:clamp(22px,3vw,30px);line-height:1.5;margin:10px 0 30px;}
 .doc-section{padding-block:48px;border-top:1px solid var(--rose);}
 .doc-section h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,3.6vw,40px);color:var(--ink);margin-bottom:22px;}
