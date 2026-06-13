@@ -5,8 +5,8 @@
    ========================================================= */
 
 :root{
-  --blush:#F0E1DE;   /* background */
-  --cream:#F8EDEA;   /* cards / accents */
+  --blush:#FAF5F3;   /* background — warm near-white, matching the app's airy field */
+  --cream:#FFFFFF;   /* cards / frames — white */
   --ink:#43222D;     /* deep plum text */
   --mauve:#8A666D;   /* muted text */
   --rose:#E3CDC9;    /* hairlines */
@@ -170,7 +170,7 @@ section{padding-block:80px;}
 .measure-wide{max-width:60ch;margin-inline:auto;}
 
 /* ---- Promise ---- */
-.promise{background:var(--cream);}
+.promise{background:var(--cream);border-block:1px solid var(--rose);}
 .promise .display{font-size:clamp(28px,4.4vw,52px);line-height:1.32;}
 
 /* ---- Footer ---- */
