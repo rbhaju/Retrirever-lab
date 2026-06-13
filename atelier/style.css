@@ -209,7 +209,8 @@ section{padding-block:80px;}
 .contact-line a{color:var(--crimson);text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:2px;}
 .contact-line a:hover{border-color:var(--crimson);}
 
-/* ---- Subtle scroll fade ---- */
-.fade{opacity:0;transform:translateY(18px);transition:opacity 1.1s ease,transform 1.1s ease;}
-.fade.in{opacity:1;transform:none;}
-@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} .fade{opacity:1;transform:none;transition:none;} }
+/* ---- Page entrance (safe: content is never left hidden) ---- */
+.fade{opacity:1;transform:none;}            /* content always visible; never depends on JS */
+@keyframes pagein{from{opacity:0}to{opacity:1}}
+body{animation:pagein .7s ease both;}
+@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} body{animation:none;} }
