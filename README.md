@@ -1,11 +1,11 @@
-# Retriever Labs — Website
+# Kepto Site
 
 Clean, organized static site for Retriever Labs and its product, Kepto.
 
 ## Structure
 
 ```
-retriever-lab-site/
+kepto-site/
 ├── index.html          Studio homepage
 ├── kepto.html          Kepto product page
 ├── css/
@@ -33,7 +33,7 @@ retriever-lab-site/
 - Add a new page: copy an HTML file, link `css/base.css` + a new page CSS, include `js/reveal.js`.
 
 ## Publish on GitHub Pages
-1. Upload the **entire `retriever-lab-site` folder contents** to your repo, keeping the folder structure (css/, js/, img/ must stay as subfolders).
+1. Upload the **entire `kepto-site` folder contents** to your repo, keeping the folder structure (css/, js/, img/ must stay as subfolders).
 2. Settings → Pages → Deploy from a branch → main → /(root) → Save.
 3. Wait ~1 minute for the live URL.
 
